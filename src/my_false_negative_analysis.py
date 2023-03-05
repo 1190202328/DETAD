@@ -271,6 +271,7 @@ def my_plot_fn_analysis(save_filename,
 
 
 if __name__ == '__main__':
+    # python my_false_negative_analysis.py --output_folder ../output/thumos/my_false_negative_analysis
     parser = ArgumentParser(description='Run the false negative error analysis.',
                             formatter_class=ArgumentDefaultsHelpFormatter)
 
