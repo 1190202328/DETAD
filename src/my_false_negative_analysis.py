@@ -184,32 +184,32 @@ def my_plot_fn_analysis(save_filename,
                                        'L',
                                        'XL', 'H', 'XH'],
                         figsize=(20, 3.5), fontsize=24):
-    # characteristic-name,bucket,ratio-value
-    characteristic_name_lst = ['coverage'] * 4
-    characteristic_name_lst += ['length'] * 4
-    characteristic_name_lst += ['num-instances'] * 4
-
-    bucket_lst = ['O', 'D', 'A', 'B'] * 3  # origin，decoder，actionness，both
-
-    title = "XS"
-    ratio_value_lst = [7.0, 6.7, 6.8, 6.4, 9.4, 9.2, 9.0, 8.5, 6.7, 6.7, 6.7, 6.7]
-
-    # title = "S"
-    # ratio_value_lst = [3.3, 3.7, 3.8, 4.4, 2.7, 2.1, 2.8, 3.1, 6.8, 6.3, 6.4, 6.7]
-
-    # title = "M"
-    # ratio_value_lst = [8.4, 7.2, 7.2, 9.6, 3.4, 3.7, 3.4, 4.0, 3.7, 3.9, 3.9, 3.3]
-
-    # title = "L"
-    # ratio_value_lst = [4.9, 8.2, 4.9, 6.6, 5.3, 4.4, 5.3, 5.3, 8.5, 9.7, 9.0, 8.5]
-
+    # # characteristic-name,bucket,ratio-value
     # characteristic_name_lst = ['coverage'] * 4
     # characteristic_name_lst += ['length'] * 4
-    # bucket_lst = ['O', 'D', 'A', 'B'] * 2  # origin，decoder，actionness，both
-    # characteristic_names = ['coverage', 'length']
-    # characteristic_names_in_text = ['Coverage', 'Length']
-    # title = "XL"
-    # ratio_value_lst = [6.7, 8.9, 6.7, 5.6, 16.2, 21.6, 16.2, 18.9]
+    # characteristic_name_lst += ['num-instances'] * 4
+    #
+    # bucket_lst = ['O', 'R', 'M', 'B'] * 3  # origin，RCE head，MTDR module，BRMR
+
+    # title = "XS"
+    # ratio_value_lst = [7.0, 6.8, 6.7, 6.8, 9.4, 9.0, 9.0, 9.5,  6.7, 6.7, 0.0, 13.3]
+
+    # title = "S"
+    # ratio_value_lst = [3.3, 3.8, 3.7, 3.3, 2.7, 2.8, 2.6, 2.5,  6.8, 6.4, 6.4, 6.5]
+
+    # title = "M"
+    # ratio_value_lst = [8.4, 7.2, 7.2, 9.0, 3.4, 3.4, 3.6, 3.3,  3.7, 3.9, 4.3, 3.9]
+
+    # title = "L"
+    # ratio_value_lst = [4.9, 4.9, 6.6, 3.3, 5.3, 5.3, 6.1, 2.6,  8.5, 9.0, 8.5, 9.0]
+
+    characteristic_name_lst = ['coverage'] * 4
+    characteristic_name_lst += ['length'] * 4
+    bucket_lst = ['O', 'R', 'M', 'B'] * 2  # origin，RCE head，MTDR module，BRMR
+    characteristic_names = ['coverage', 'length']
+    characteristic_names_in_text = ['Coverage', 'Length']
+    title = "XL"
+    ratio_value_lst = [6.7, 6.7, 8.9, 10.0, 16.2, 16.2, 18.9, 21.6]
 
 
     save_filename = f'{save_filename}/false_negative_analysis_{title}.pdf'
@@ -221,9 +221,13 @@ def my_plot_fn_analysis(save_filename,
                                            'bucket': bucket_lst,
                                            'ratio-value': ratio_value_lst,
                                            })
-    false_negative_rate_df['order'] = pd.Categorical(false_negative_rate_df['bucket'],
-                                                     categories=buckets_order, ordered=True)
-    false_negative_rate_df.sort_values(by='order', inplace=True)
+    # 排序
+    # false_negative_rate_df['order'] = pd.Categorical(false_negative_rate_df['bucket'],
+    #                                                  categories=buckets_order, ordered=True)
+    # false_negative_rate_df.sort_values(by='order', inplace=True)
+    # false_negative_rate_df_by_characteristic_name = false_negative_rate_df.groupby('characteristic-name')
+
+    # 不排序
     false_negative_rate_df_by_characteristic_name = false_negative_rate_df.groupby('characteristic-name')
 
     fig = plt.figure(figsize=figsize)

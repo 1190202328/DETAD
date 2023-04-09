@@ -128,7 +128,7 @@ def subplot_error_type_impact(fig, ax, values, labels, colors, xlabel, ylabel, t
    
     ax.set_ylabel(ylabel, fontsize=fontsize)
     ax.set_xlabel(xlabel, fontsize=fontsize)
-    plt.xticks(ticks=[0, 1.1, 2.2, 3.3], labels=['O', 'D', 'A', 'B'], fontsize=fontsize/1.2)
+    plt.xticks(ticks=[0, 1.1, 2.2, 3.3], labels=['O', 'R', 'M', 'B'], fontsize=fontsize/1.2)
     ax.xaxis.set_tick_params(width=0)
     plt.yticks(fontsize=fontsize/1.2)
     ax.set_ylim(bottom=bottom,top=top)
@@ -184,20 +184,20 @@ def main(output_folder):
     colors_all = ['#b2df8a', '#1f78b4', '#fb9a99', '#e31a1c', '#a6cee3']
     xlabels = ['Double Detection Err', 'Wrong Label Err', 'Localization Err', 'Confusion Err', 'Background Err']
 
-    # idx = 0
-    # values = [0.35, 0.33, 0.21, 0.26]
+    idx = 0
+    values = [0.35, 0.21, 0.31, 0.21]
 
     # idx = 1
-    # values = [1.54, 1.52, 1.53, 1.49]
+    # values = [1.54, 1.53, 1.39, 1.51]
 
     # idx = 2
-    # values = [5.61, 5.37, 5.40, 5.37]
+    # values = [5.61, 5.40, 5.54, 5.03]
 
     # idx = 3
-    # values = [0.54, 0.59, 0.50, 0.50]
+    # values = [0.54, 0.50, 0.55, 0.56]
 
-    idx = 4
-    values = [3.53, 3.53, 3.78, 3.87]
+    # idx = 4
+    # values = [3.53, 3.78, 3.62, 3.64]
 
     save_filename = os.path.join(output_folder, f'false_positive_analysis_{xlabels[idx]}.pdf')
     values = [x/100 for x in values]
